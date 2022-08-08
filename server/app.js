@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors'
 
 import {} from 'dotenv/config'
-import { getRequest, postRequest, signUpRequest } from './controllers/controller.js';
+import { getRequest, postRequest, deleteRequest } from './controllers/controller.js';
 
 
 const app = express()
@@ -15,13 +15,13 @@ mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true
 })
 
+
+
 app.get("/todos", getRequest)
 
 app.post(("/todo/new"), postRequest)
 
-// Creating database when user sign up
-app.post(("/todo/user"), signUpRequest)
-
+app.delete(("/delete/:id"), deleteRequest)
 
 app.listen(process.env.PORT || 9000, (req, res)=>{
     console.log("server is running")

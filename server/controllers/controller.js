@@ -1,47 +1,67 @@
-import express from 'express'
+
 import Tester from '../models/db.js';
 
 const getRequest = async (req, res)=>{
     const todos = await Tester.find(
     )
     res.send(todos);
+    
+}
+
+const deleteRequest =  (req, res)=>{
+   
+ const removeNote = Tester.deleteOne({_id: req.params.id}, (err)=>{
+        if(err){
+            console.log(err)
+        } else {
+            console.log('success')
+        }
+    })
 }
 
 const postRequest = (req, res)=>{
-    console.log(req)
-    // const newNote = new Tester({
-    //     title: req.body.title,
 
-
-    // })
-    // newNote.save();
-    // res.json(newNote);
-
-    const pushedNote = {
-        title: req.body.title,
+    const newNote = new Tester({  
+        email: req.body.user,
+        title: req.body.title,   
         content: req.body.content
-    }
-    // Tester.find({user: req.user.username }, async (err, foundUser)=>{
-    //     console.log(foundUser)
+    })
+    newNote.save();
+    res.json(newNote);
+
+    // const userId = req.body.user
+   
+    // const pushedNote = {
+    //     title: req.body.title,
+    //     content: req.body.content
+    // }
+    
+    // Tester.findOne({user: userId}, async (err, foundUser)=>{
+        
     //     if(err){
     //         console.log(err)
     //     } else {
     //         if(foundUser){
-    //             foundUser[0].notes.push(pushedNote)
-    //             console.log(foundUser[0].notes)
-    //             await foundUser[0].save()
+    //             foundUser.note.push(pushedNote)
+                
+    //             await foundUser.save()
+             
+    //         } else {
+    //             const newNote = new Tester({
+                
+    //                 user: userId,
+    //                 note: [{
+    //                     title: req.body.title,
+    //                     content: req.body.content
+    //                 }]
+    //             })
+    //             newNote.save();
+    //             res.json(newNote);
     //         }
     //     }
     // })
 }
 
-const signUpRequest = (req, res)=>{
-    const newNote = new Tester({
-        user: req.body.user
 
-    })
-    newNote.save();
-    res.json(newNote);
-}
 
-export {getRequest, postRequest, signUpRequest}
+export {getRequest, postRequest, deleteRequest}

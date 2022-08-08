@@ -5,15 +5,18 @@ export const UserContext = createContext();
 
 export const UserProvider = ({children}) => {
     const [currentUser, setCurrentUser] = useState(null);
-    const [userToken, setUserToken] = useState(null);
+    const [userEmail, setUserEmail] = useState(null);
+    const [notes, setNotes] = useState([]);
+    const [noteId, setNoteId] = useState(null);
+    const [editStatus, setEditStatus] = useState(false)
     
-    const value = {currentUser, setCurrentUser, userToken};
-    
+    const value = {currentUser, setCurrentUser, userEmail, setNotes, notes,
+        setNoteId, noteId, editStatus, setEditStatus};
 
     useEffect(()=>{
         onAuthStateChangedListener((user)=>{
-
-            setUserToken( `${user && user.accessToken}`)
+            
+            setUserEmail( `${user && user.email}`)
             setCurrentUser(user)
         })
     }, [])
