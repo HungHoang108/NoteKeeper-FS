@@ -1,5 +1,14 @@
+// .create-note-box {
 
-.create-note-box-form {
+//     .create-note-fields {
+//         display: flex;
+//         flex-direction: column;
+        
+   
+//     }
+// }
+
+.edit-note-form {
     position: relative;
     width: 480px;
     margin: 30px auto 20px auto;
@@ -17,7 +26,7 @@
         font-family: inherit;
         resize: none;
       }
-      button {
+        button {
         position: absolute;
         right: 18px;
         bottom: -18px;
@@ -30,5 +39,6 @@
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         cursor: pointer;
         outline: none;
+        font-size: 0.8rem;
       }
   }

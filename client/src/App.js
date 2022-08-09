@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
 			{currentUser ? (<div>
-				<button onClick={haddleSignOut}>SIGN OUT</button>
+				<button className='sign-out-button' onClick={haddleSignOut}>SIGN OUT</button>
 				{editStatus ? <EditNote/> : <CreateNote/>}
 				
 				<RenderNotes/>

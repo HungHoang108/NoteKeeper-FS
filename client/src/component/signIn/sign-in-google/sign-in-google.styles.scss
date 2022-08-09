@@ -1,0 +1,13 @@
+.google-sign-in-button {
+    // margin-top: 0.3rem;
+    width: 14rem;
+    background-color: #2191e1;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+
+    &:hover {
+        background-color: black;
+    }
+}
+

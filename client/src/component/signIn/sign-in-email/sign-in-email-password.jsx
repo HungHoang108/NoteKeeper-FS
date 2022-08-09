@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { signInAuthUserWithEmailAndPassword } from "../../firebase/firebase";
+import { signInAuthUserWithEmailAndPassword } from "../../../firebase/firebase";
+import './sign-in-email.styles.scss'
 
 const inputForm = {
     email: "",
@@ -10,8 +11,6 @@ const SignInWithEmailAndPassword = () => {
    
   const [formField, setFormField] = useState(inputForm);
   
-
-
     const { email, password} = formField;
 
     const handleChange = (event) =>{
@@ -51,17 +50,17 @@ const SignInWithEmailAndPassword = () => {
     }
 
     return (
-        <div className="sign-up-box">
-            <h2>Sign in with your email and password</h2>
-            <form>
+        <div className="sign-in-box">
+            <h5>Already Have An Account?</h5>
+            <form className="sign-in-form">
+              <input placeholder="Email" type="email" required onChange={handleChange} name="email" value={email}/>
 
-              <label>Email</label>
-              <input type="email" required onChange={handleChange} name="email" value={email}/>
-
-              <label>password</label>
-              <input type="password" required onChange={handleChange} name="password" value={password}/>
+              <input placeholder="Password" type="password" required onChange={handleChange} name="password" value={password}/>
+            
+            <div>
+            <button onClick={handleSubmit} type="submit" >Sign In</button>
+            </div>
               
-              <button onClick={handleSubmit} type="submit" >Sign In</button>
             </form>
         </div>
     )

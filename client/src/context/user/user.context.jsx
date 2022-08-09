@@ -4,14 +4,20 @@ import { onAuthStateChangedListener } from '../../firebase/firebase';
 export const UserContext = createContext();
 
 export const UserProvider = ({children}) => {
+    const [newNote, setNewNote] = useState({
+		title: "",
+		content:""
+	
+	});
     const [currentUser, setCurrentUser] = useState(null);
     const [userEmail, setUserEmail] = useState(null);
     const [notes, setNotes] = useState([]);
     const [noteId, setNoteId] = useState(null);
     const [editStatus, setEditStatus] = useState(false)
+    const [editId, setEditId] = useState(null);
     
     const value = {currentUser, setCurrentUser, userEmail, setNotes, notes,
-        setNoteId, noteId, editStatus, setEditStatus};
+        setNoteId, noteId, editStatus, setEditStatus, editId, setEditId, setNewNote, newNote};
 
     useEffect(()=>{
         onAuthStateChangedListener((user)=>{

@@ -19,6 +19,21 @@ const deleteRequest =  (req, res)=>{
     })
 }
 
+const updateRequest =  (req, res)=>{
+ 
+        Tester.updateOne({_id: req.params.id}, 
+          {$set: req.body}, 
+          (err)=>{
+            if(err){
+              res.send("is err")
+            }else{
+              res.send("success")
+            }
+          })
+      
+   }
+   
+
 const postRequest = (req, res)=>{
 
     const newNote = new Tester({  
@@ -64,4 +79,4 @@ const postRequest = (req, res)=>{
 
 
 
-export {getRequest, postRequest, deleteRequest}
+export {getRequest, postRequest, deleteRequest, updateRequest}

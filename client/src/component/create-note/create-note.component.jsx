@@ -2,19 +2,14 @@ import { useState, useContext, useEffect} from 'react'
 import { UserContext } from '../../context/user/user.context';
 import axios from 'axios';
 
+import './create-note.styles.scss'
 
 const api_base = 'http://localhost:9000';
 
 
 const CreateNote = () => {
-	const {userEmail, setNotes, notes} = useContext(UserContext)
+	const {userEmail, setNotes, notes, setNewNote, newNote} = useContext(UserContext)
 	
-	const [newNote, setNewNote] = useState({
-		
-		content:""
-	
-	});
-
 	useEffect(() => {
 		GetTodos();
 	}, []);
@@ -41,7 +36,8 @@ const CreateNote = () => {
 		})
 	}
 
-  const addNote = async () => {
+  const addNote = async (e) => {
+	e.preventDefault()
 		const data = await fetch(api_base + "/todo/new", {
 			method: "POST",
 			headers: {
@@ -62,14 +58,13 @@ const CreateNote = () => {
 
   return (
 
-        <div className="content">
-			<h2>Create tasks</h2>
-			<div>
-				<input placeholder="Write title" name='title'  onChange={handleChange}  />
-				<input  placeholder="Write content" name='content' onChange={handleChange} />
-			</div>
-			
-			<div className="button" onClick={addNote}>Create Task</div>
+        <div className="create-note-box">
+			<form className='create-note-box-form'>
+			<input placeholder="Title" name='title'  onChange={handleChange}  />
+			<textarea rows="4" cols="50" placeholder="Note" name='content' onChange={handleChange} />
+			<button className="create-note-button" onClick={addNote}>Add</button>
+
+			</form>
 
 		</div>
 

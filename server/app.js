@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors'
 
 import {} from 'dotenv/config'
-import { getRequest, postRequest, deleteRequest } from './controllers/controller.js';
+import { getRequest, postRequest, deleteRequest, updateRequest } from './controllers/controller.js';
 
 
 const app = express()
@@ -22,6 +22,8 @@ app.get("/todos", getRequest)
 app.post(("/todo/new"), postRequest)
 
 app.delete(("/delete/:id"), deleteRequest)
+
+app.patch(("/update/:id"), updateRequest)
 
 app.listen(process.env.PORT || 9000, (req, res)=>{
     console.log("server is running")

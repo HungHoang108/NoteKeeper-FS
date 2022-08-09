@@ -1,28 +1,25 @@
 
-import { useState, useContext} from 'react'
+import {useContext} from 'react'
 import { UserContext } from '../../context/user/user.context';
+import './render-notes.styles.scss'
 import axios from 'axios';
 
 const RenderNotes = () => {
     
-  const { notes, userEmail, setNotes, setNoteId, setEditStatus} = useContext(UserContext)
+  const { notes, userEmail, setNotes, setNoteId, setEditStatus, setEditId} = useContext(UserContext)
 
   return (
 		<div>
 		{notes.map(existedNote => {
       setNoteId(existedNote._id)
-			return existedNote.email === userEmail? (<div key={existedNote._id}>
-				<h3>{existedNote.title}</h3>
+			return existedNote.email === userEmail? (<div className='note' key={existedNote._id}>
+				<h1>{existedNote.title}</h1>
 				<p>{existedNote.content}</p>
 
         <button onClick={()=>{
                setEditStatus(true)
-               console.log('edit set')
+               setEditId(existedNote._id)
 
-                // setNotes({
-                //   title: notes[id].title,
-                //   content: notes[id].content
-                // })
         }}>Update</button>
 
         <button onClick={async ()=>{

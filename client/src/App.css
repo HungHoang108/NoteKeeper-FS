@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.sign-out-button {
+  width: 7rem;
+  background-color: bisque;
+  color: black;
+}

@@ -2,6 +2,8 @@ import { useState, useContext } from "react";
 import { UserContext } from "../../context/user/user.context";
 
 import { createAuthUserWithEmailAndPassword } from "../../firebase/firebase";
+import './sign-up.styles.scss'
+
 
 const inputForm = {
   displayName: "",
@@ -51,40 +53,26 @@ const handleSubmit = async (event)=> {
   })   
 }
 
-// const addTodo = async () => {
-//     const data = await fetch(api_base + "/todo/new", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json" 
-//         },
-//         body: JSON.stringify({
-//             title: newTodo
-//         })
-//     }).then(res => res.json());
-
-//     setTodos([...todos, data]);
-    
-//     setNewTodo("");
-// }
-
 
     return (
         <div className="sign-up-box">
-            <h2>Sign up with your email and password</h2>
-            <form>
-              <label>display name</label>
-              <input type="text" required onChange={handleChange} name="displayName" value={displayName}/>
-
-              <label>Email</label>
-              <input type="email" required onChange={handleChange} name="email" value={email}/>
-
-              <label>password</label>
-              <input type="password" required onChange={handleChange} name="password" value={password}/>
-
-              <label>confirm password</label>
-              <input type="password" required onChange={handleChange} name="confirmedPassword" value={confirmedPassword}/>
+            <h5>Sign up with email and password</h5>
+            <form className="sign-up-form">
               
-              <button onClick={handleSubmit} type="submit" >Sign Up</button>
+              <input placeholder="Display Name" type="text" required onChange={handleChange} name="displayName" value={displayName}/>
+
+              
+              <input placeholder="Email" type="email" required onChange={handleChange} name="email" value={email}/>
+
+              
+              <input placeholder="Password" type="password" required onChange={handleChange} name="password" value={password}/>
+
+              
+              <input placeholder="Confirm Password" type="password" required onChange={handleChange} name="confirmedPassword" value={confirmedPassword}/>
+              <div>
+                 <button className="sign-up-button" onClick={handleSubmit} type="submit" >Sign Up</button>
+              </div>
+              
             </form>
         </div>
     )
