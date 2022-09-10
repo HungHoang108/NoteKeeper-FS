@@ -6,11 +6,12 @@ import { signOutUser } from './firebase/firebase';
 import CreateNote from './component/create-note/create-note.component';
 import RenderNotes from './component/render-notes/render-notes.component';
 import EditNote from './component/edit-note/edit-note.component';
+import SearchBar from './component/search-bar/search-bar.component';
 
 import './App.css';
 
 function App() {
-	const {currentUser, editStatus} = useContext(UserContext)
+	const {currentUser, editStatus, searchStatus} = useContext(UserContext)
 
 	const haddleSignOut = async ()=>{
 		await signOutUser()
@@ -19,7 +20,12 @@ function App() {
   return (
     <div className="App">
 			{currentUser ? (<div>
-				<button className='sign-out-button' onClick={haddleSignOut}>SIGN OUT</button>
+				<div className='app-header'>
+					
+					<button className='sign-out-button' onClick={haddleSignOut}>SIGN OUT</button>
+					<SearchBar/>
+				</div>
+
 				{editStatus ? <EditNote/> : <CreateNote/>}
 				
 				<RenderNotes/>

@@ -1,15 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.scss';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {UserProvider} from './context/user/user.context';
+import {SearchProvider} from './context/note-filter/note-filter.context';
+
+import './index.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <UserProvider>
-    <App />
+      <SearchProvider>
+        <App />
+      </SearchProvider>
     </UserProvider>
   </React.StrictMode>
 );

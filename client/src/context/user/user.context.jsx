@@ -15,9 +15,13 @@ export const UserProvider = ({children}) => {
     const [noteId, setNoteId] = useState(null);
     const [editStatus, setEditStatus] = useState(false)
     const [editId, setEditId] = useState(null);
+
+    const [noteOfEachUser, setNoteOfEachUser] = useState([])
     
     const value = {currentUser, setCurrentUser, userEmail, setNotes, notes,
-        setNoteId, noteId, editStatus, setEditStatus, editId, setEditId, setNewNote, newNote};
+        setNoteId, noteId, editStatus, setEditStatus, editId, setEditId, setNewNote, newNote,
+    noteOfEachUser, setNoteOfEachUser};
+
 
     useEffect(()=>{
         onAuthStateChangedListener((user)=>{

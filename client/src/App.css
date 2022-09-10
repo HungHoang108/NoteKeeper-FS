@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+
+
+
 }
 
 .App-logo {
@@ -42,3 +45,8 @@
   background-color: bisque;
   color: black;
 }
+
+/* .app-header {
+  display: flex;
+  justify-content: space-around;
+} */
